@@ -1,0 +1,626 @@
+/*
+* DonasiBerkat Tasikmalaya - Donation Guide CSS Stylesheet
+* Modern and professional styling for the donation guide page
+*/
+
+/* ========== BREADCRUMB NAVIGATION ========== */
+.breadcrumb-container {
+  background-color: var(--color-gray-100);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '/';
+  margin: 0 var(--spacing-sm);
+  color: var(--color-gray-400);
+}
+
+.breadcrumb li a {
+  color: var(--color-gray-600);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.breadcrumb li a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumb li.active {
+  color: var(--color-gray-800);
+  font-weight: 500;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/pattern-light.svg');
+  background-size: 300px;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  padding: var(--spacing-xl) 0 var(--spacing-xxl);
+  background-color: var(--color-white);
+}
+
+.guide-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========== GUIDE INTRO ========== */
+.guide-intro {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  align-items: center;
+}
+
+.guide-intro-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-gray-900);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.guide-intro-text h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+}
+
+.guide-intro-text p {
+  color: var(--color-gray-700);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.guide-intro-image {
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.guide-intro-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.3) 0%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.guide-intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========== GUIDE SECTIONS ========== */
+.guide-section {
+  margin-bottom: var(--spacing-xxl);
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-200);
+}
+
+.guide-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-gray-900);
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.guide-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+}
+
+/* ========== CRITERIA GRID ========== */
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.criteria-item {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-gray-200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.criteria-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+
+.criteria-icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.criteria-item h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-gray-900);
+  font-weight: 600;
+}
+
+.criteria-item p {
+  color: var(--color-gray-700);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-gray-200);
+  margin: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.divider::before {
+  content: 'atau';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  padding: 0 var(--spacing-md);
+  color: var(--color-gray-500);
+  font-size: 0.9rem;
+}
+
+/* ========== NOT ALLOWED LIST ========== */
+.not-allowed {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.not-allowed-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  padding: 0;
+  margin: 0;
+}
+
+.not-allowed-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-gray-800);
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.not-allowed-list li i {
+  color: var(--color-danger);
+  margin-right: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+/* ========== STEPS ========== */
+.steps {
+  position: relative;
+  padding-left: 30px;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 29px;
+  width: 1px;
+  background-color: var(--color-primary-light);
+}
+
+.step-item {
+  position: relative;
+  margin-bottom: var(--spacing-xl);
+  padding-left: var(--spacing-xl);
+}
+
+.step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-number {
+  position: absolute;
+  left: -15px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 0 0 4px white;
+  z-index: 2;
+}
+
+.step-content {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-200);
+  position: relative;
+}
+
+.step-content h4 {
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.step-content p {
+  color: var(--color-gray-700);
+  margin-bottom: var(--spacing-md);
+}
+
+.photo-tips, .form-tips {
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.photo-tips h5, .form-tips h5 {
+  color: var(--color-gray-800);
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.photo-tips i, .form-tips i {
+  color: var(--color-primary);
+}
+
+.photo-tips ul, .form-tips ul {
+  padding-left: var(--spacing-lg);
+  margin: 0;
+}
+
+.photo-tips ul li, .form-tips ul li {
+  color: var(--color-gray-700);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.alert-safety {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-left: 4px solid var(--color-info);
+}
+
+.alert i {
+  color: var(--color-info);
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.alert strong {
+  color: var(--color-gray-900);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.alert p {
+  color: var(--color-gray-700);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* ========== FAQ SECTION ========== */
+.faq-section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  cursor: pointer;
+  background-color: var(--color-white);
+}
+
+.accordion-header span {
+  font-weight: 600;
+  color: var(--color-gray-800);
+  flex: 1;
+}
+
+.accordion-header i {
+  font-size: 0.9rem;
+  color: var(--color-gray-600);
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  border-top: 1px solid transparent;
+}
+
+.accordion-content p {
+  padding: var(--spacing-md);
+  margin: 0;
+  color: var(--color-gray-700);
+}
+
+.accordion-item.active {
+  box-shadow: var(--shadow-sm);
+}
+
+.accordion-item.active .accordion-header {
+  background-color: var(--color-gray-50);
+}
+
+.accordion-item.active .accordion-header i {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 300px;
+  border-top-color: var(--color-gray-200);
+}
+
+/* ========== READY TO DONATE SECTION ========== */
+.ready-to-donate {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xxl);
+  box-shadow: var(--shadow-md);
+}
+
+.ready-content h2 {
+  color: white;
+  margin-bottom: var(--spacing-sm);
+}
+
+.ready-content p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ready-to-donate .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: white;
+  color: var(--color-primary);
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.ready-to-donate .btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ready-to-donate .btn i {
+  font-size: 1.2rem;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media screen and (max-width: 768px) {
+  .guide-intro {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .guide-intro-text {
+    order: 1;
+  }
+  
+  .guide-intro-image {
+    order: 0;
+    height: 200px;
+  }
+  
+  .not-allowed-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .steps {
+    padding-left: 20px;
+  }
+  
+  .steps::before {
+    left: 10px;
+  }
+  
+  .step-item {
+    padding-left: var(--spacing-md);
+  }
+  
+  .step-number {
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .ready-to-donate {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .page-header p {
+    font-size: 1rem;
+  }
+  
+  .guide-section {
+    padding: var(--spacing-md);
+  }
+  
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .accordion-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .ready-to-donate .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

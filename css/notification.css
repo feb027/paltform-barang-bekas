@@ -1,0 +1,87 @@
+/*
+* DonasiBerkat Tasikmalaya - Notification Styles
+*/
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 350px;
+    z-index: 9999;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.notification-content {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+}
+
+.notification.info .notification-content {
+    border-left: 4px solid var(--color-info);
+}
+
+.notification.success .notification-content {
+    border-left: 4px solid var(--color-success);
+}
+
+.notification.warning .notification-content {
+    border-left: 4px solid var(--color-warning);
+}
+
+.notification.error .notification-content {
+    border-left: 4px solid var(--color-danger);
+}
+
+.notification span {
+    color: var(--color-gray-800);
+    font-size: 0.95rem;
+    margin-right: 10px;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-600);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-close:hover {
+    color: var(--color-gray-900);
+}
+
+/* Multiple notifications stacking */
+.notification + .notification {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 576px) {
+    .notification {
+        left: 20px;
+        right: 20px;
+        max-width: unset;
+    }
+}

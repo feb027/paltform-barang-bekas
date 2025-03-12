@@ -1,0 +1,525 @@
+/*
+* DonasiBerkat Tasikmalaya - Navbar CSS Stylesheet
+* Modern and professional navigation styling
+*/
+
+/* ========== HEADER & NAVIGATION ========== */
+.main-header {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: var(--spacing-sm) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.main-header.scrolled {
+  padding: var(--spacing-xs) 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 1.2rem;
+  overflow: hidden;
+}
+
+.logo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.logo-text h1 a {
+  color: var(--color-gray-800);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.logo-text h1 a span {
+  color: var(--color-primary);
+}
+
+.logo-text .tagline {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+/* Main navigation */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li {
+  margin: 0;
+}
+
+.main-nav ul li a {
+  color: var(--color-gray-700);
+  font-weight: 500;
+  position: relative;
+  padding: var(--spacing-sm) var(--spacing-xs);
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.main-nav ul li a:hover {
+  color: var(--color-primary);
+}
+
+.main-nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.main-nav ul li a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.main-nav ul li a.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.main-nav ul li a.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* User actions */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.user-actions .btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+}
+
+.user-actions .btn-outline {
+  background-color: transparent;
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-700);
+}
+
+.user-actions .btn-outline:hover {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-500);
+  color: var(--color-gray-900);
+  transform: translateY(-2px);
+}
+
+.user-actions .btn-primary {
+  box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+}
+
+.user-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 204, 113, 0.25);
+}
+
+/* Mobile menu button */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 42px;
+  height: 42px;
+  color: var(--color-gray-800);
+  cursor: pointer;
+  border-radius: var(--radius-circle);
+  transition: all 0.3s ease;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  outline: none;
+}
+
+.mobile-menu-toggle:hover {
+  color: var(--color-primary);
+  background-color: var(--color-gray-100);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+.mobile-menu-toggle span {
+  transition: all 0.3s ease;
+  font-size: 1.4rem;
+}
+
+.mobile-menu-toggle.active {
+  color: var(--color-primary);
+  background-color: var(--color-gray-100);
+}
+
+/* Dropdown for user menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-gray-100);
+  transition: all 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: var(--color-gray-200);
+}
+
+.dropdown-toggle .user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.dropdown-toggle .user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dropdown-toggle .user-name {
+  font-weight: 500;
+  color: var(--color-gray-800);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-toggle i {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  transition: transform 0.2s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  padding: var(--spacing-xs) 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-toggle:focus + .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-gray-700);
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu a i {
+  width: 16px;
+  color: var(--color-gray-600);
+  text-align: center;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-primary);
+}
+
+.dropdown-menu a:hover i {
+  color: var(--color-primary);
+}
+
+.dropdown-menu a#logout-btn {
+  border-top: 1px solid var(--color-gray-200);
+  margin-top: var(--spacing-xs);
+  color: var(--color-danger);
+}
+
+.dropdown-menu a#logout-btn:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.dropdown-menu a#logout-btn i {
+  color: var(--color-danger);
+}
+
+.mobile-menu-section {
+    display: none;
+}
+
+/* Mobile menu styles */
+@media screen and (max-width: 991px) {
+  /* Rearrange header items */
+  .main-header .container {
+    position: relative;
+  }
+  
+  .nav-container {
+    margin-left: auto;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+  
+  /* Mobile navigation */
+  .main-nav {
+    position: fixed;
+    top: 0; /* Changed to start from the very top */
+    right: 0;
+    width: 300px;
+    max-width: 80%; /* Limit width on very small screens */
+    height: 100vh; /* Full height */
+    background-color: var(--color-white);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    z-index: 1001;
+    padding-top: 80px; /* Add padding for the header */
+    padding-bottom: var(--spacing-lg);
+  }
+  
+  .main-nav.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .main-nav ul li {
+    width: 100%;
+  }
+  
+  .main-nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .main-nav ul li a:hover {
+    background-color: var(--color-gray-100);
+    border-left-color: var(--color-primary-light);
+  }
+  
+  .main-nav ul li a.active {
+    border-left-color: var(--color-primary);
+    background-color: rgba(46, 204, 113, 0.08);
+  }
+  
+  .main-nav ul li a::after {
+    display: none;
+  }
+  
+  /* Overlay for mobile menu */
+  .nav-overlay {
+    position: fixed;
+    top: 0; /* Changed to cover the whole screen including header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Increased opacity for better visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99; /* Positioned below the header and menu */
+  }
+  
+  .nav-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Mobile menu toggle button */
+  .mobile-menu-toggle {
+    display: flex;
+    order: 2;
+    margin-left: var(--spacing-sm);
+  }
+  
+  /* User actions in mobile */
+  .user-actions {
+    order: 1;
+    margin-right: auto;
+  }
+  
+  .user-actions .btn {
+    display: none;
+  }
+  
+  /* Add mobile-specific menu section */
+  .mobile-menu-section {
+    display: block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-top: 1px solid var(--color-gray-200);
+    margin-top: var(--spacing-md);
+  }
+  
+  .mobile-menu-section h4 {
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .mobile-user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .mobile-user-actions .btn {
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Make header more prominent on mobile */
+  .main-header {
+    padding: var(--spacing-md) 0;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-image {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .logo-text h1 {
+    font-size: 1.35rem;
+  }
+  
+  .mobile-menu-toggle {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .logo-text h1 {
+    font-size: 1.25rem;
+  }
+  
+  .logo-image {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .main-header {
+    padding: var(--spacing-sm) 0; /* Increased padding for mobile */
+  }
+  
+  .logo-text .tagline {
+    font-size: 0.7rem;
+  }
+  
+  /* More compact mobile header for very small screens while keeping it prominent */
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mobile-menu-toggle span {
+    font-size: 1.25rem;
+  }
+}

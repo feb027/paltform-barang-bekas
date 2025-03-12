@@ -1,0 +1,486 @@
+/*
+* DonasiBerkat Tasikmalaya - Authentication CSS Stylesheet
+* Modern and professional styling for login and registration pages
+*/
+
+/* ========== AUTHENTICATION SECTION ========== */
+.auth-section {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-gray-100);
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+}
+
+.auth-container {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+
+/* Authentication form side */
+.auth-content {
+  padding: var(--spacing-xl);
+  position: relative;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-header h1 {
+  font-size: 1.75rem;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.auth-header p {
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+/* Auth form styling */
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--color-gray-800);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-500);
+  transition: color 0.3s ease;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 48px;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: var(--color-gray-800);
+}
+
+.form-control::placeholder {
+  color: var(--color-gray-400);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+}
+
+.form-control:focus + .input-icon {
+  color: var(--color-primary);
+}
+
+/* Password field with toggle */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-gray-500);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: var(--color-gray-700);
+}
+
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.forgot-password {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Password strength meter */
+.password-strength {
+  margin-top: var(--spacing-xs);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.strength-label {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  margin-right: var(--spacing-sm);
+}
+
+.strength-meter {
+  flex-grow: 1;
+  height: 4px;
+  background-color: var(--color-gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.strength-text {
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+
+/* Strength levels */
+.strength-weak .strength-bar {
+  width: 25%;
+  background-color: var(--color-danger);
+}
+
+.strength-fair .strength-bar {
+  width: 50%;
+  background-color: var(--color-warning);
+}
+
+.strength-good .strength-bar {
+  width: 75%;
+  background-color: var(--color-info);
+}
+
+.strength-strong .strength-bar {
+  width: 100%;
+  background-color: var(--color-success);
+}
+
+/* Remember me checkbox */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.checkbox-container {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--color-gray-300);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+  border-color: var(--color-primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.checkbox-container .checkmark::after {
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Terms and conditions */
+.terms-group {
+  font-size: 0.85rem;
+}
+
+.terms-group a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.terms-group a:hover {
+  text-decoration: underline;
+}
+
+/* Form buttons */
+.btn-block {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.875rem 1.5rem;
+  text-transform: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: inherit;
+  border-radius: inherit;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Auth footer */
+.auth-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.auth-footer p {
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+.auth-footer a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Alert messages */
+.alert {
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-md);
+  color: white;
+}
+
+.alert-danger {
+  background-color: var(--color-danger);
+}
+
+.alert-success {
+  background-color: var(--color-success);
+}
+
+/* Auth sidebar */
+.auth-sidebar {
+  background-color: var(--color-primary);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.auth-sidebar-content {
+  position: relative;
+  z-index: 2;
+}
+
+.auth-sidebar h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.auth-sidebar p {
+  opacity: 0.9;
+  margin-bottom: var(--spacing-lg);
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.feature-list li i {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+}
+
+.auth-decoration {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.auth-decoration::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media screen and (max-width: 991px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .auth-sidebar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .auth-section {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .auth-container {
+    box-shadow: none;
+  }
+  
+  .auth-content {
+    padding: var(--spacing-md);
+  }
+  
+  .auth-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .form-control {
+    padding: 0.75rem 1rem 0.75rem 40px;
+    font-size: 0.95rem;
+  }
+  
+  .input-icon {
+    width: 40px;
+  }
+  
+  .password-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .forgot-password {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .checkbox-container {
+    font-size: 0.85rem;
+  }
+}

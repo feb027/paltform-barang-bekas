@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - DonasiBerkat Tasikmalaya</title>
+    <meta name="description" content="Masuk ke akun DonasiBerkat untuk mulai berdonasi atau menerima barang bekas layak pakai.">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-image">
+                   <img src="/assets/logo-kecil.png" alt="Logo" />
+                </div>
+                <div class="logo-text">
+                    <h1><a href="/">Donasi<span>Berkat</span></a></h1>
+                    <p class="tagline">Berbagi Keberkahan untuk Tasikmalaya</p>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/donasi.html">Donasi</a></li>
+                        <li><a href="/browse.html">Cari Barang</a></li>
+                        <li><a href="/tentang.html">Tentang Kami</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="user-actions">
+                    <a href="/login.html" class="btn btn-outline active">Masuk</a>
+                    <a href="/register.html" class="btn btn-primary">Daftar</a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <span class="fas fa-bars"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="nav-overlay"></div>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-content">
+                    <div class="auth-header">
+                        <h1>Selamat Datang Kembali</h1>
+                        <p>Masuk ke akun Anda untuk melanjutkan donasi dan berbagi kebaikan</p>
+                    </div>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="alert alert-danger" id="login-error" style="display: none;">
+                            Email atau kata sandi salah. Silakan coba lagi.
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email Anda" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="password-header">
+                                <label for="password">Kata Sandi</label>
+                                <a href="/lupa-password.html" class="forgot-password">Lupa kata sandi?</a>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-icon"><i class="fas fa-lock"></i></span>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan kata sandi Anda" required>
+                                <button type="button" class="password-toggle" tabindex="-1">
+                                    <i class="fas fa-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group remember-me">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkmark"></span>
+                                Ingat saya
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <span class="btn-text">Masuk</span>
+                                <div class="btn-loader" style="display: none;">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Belum memiliki akun? <a href="/register.html">Daftar Sekarang</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-sidebar">
+                    <div class="auth-sidebar-content">
+                        <h2>Berbagi Kebaikan untuk Sesama</h2>
+                        <p>DonasiBerkat memudahkan Anda dalam menyalurkan barang bekas layak pakai kepada yang membutuhkan di Tasikmalaya.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Donasi mudah dan transparan</li>
+                            <li><i class="fas fa-check-circle"></i> Bantu sesama dengan barang bekas</li>
+                            <li><i class="fas fa-check-circle"></i> Berkontribusi pada pengurangan limbah</li>
+                        </ul>
+                    </div>
+                    <div class="auth-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <!-- Visual elements -->
+        <div class="footer-pattern"></div>
+        <div class="footer-accent"></div>
+        
+        <!-- Footer bottom with copyright -->
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="current-year">2023</span> DonasiBerkat Tasikmalaya. Hak Cipta Dilindungi.</p>
+                <div class="footer-bottom-links">
+                    <a href="/kebijakan-privasi.html">Kebijakan Privasi</a>
+                    <a href="/syarat-ketentuan.html">Syarat & Ketentuan</a>
+                    <a href="/faq.html">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+</html>

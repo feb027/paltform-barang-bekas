@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donasi Saya | DonasiBerkat Tasikmalaya</title>
+    <meta name="description" content="Kelola semua donasi yang telah Anda berikan di DonasiBerkat Tasikmalaya.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/donasi-saya.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-image">
+                   <img src="assets/logo-kecil.png" alt="Logo" />
+                </div>
+                <div class="logo-text">
+                    <h1><a href="/">Donasi<span>Berkat</span></a></h1>
+                    <p class="tagline">Berbagi Keberkahan untuk Tasikmalaya</p>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="donasi.html">Donasi</a></li>
+                        <li><a href="browse.html">Cari Barang</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                    </ul>
+                    
+                    <!-- Mobile-specific menu section -->
+                    <div class="mobile-menu-section">
+                        <h4>Akun</h4>
+                        <div class="mobile-user-actions">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </nav>
+                
+                <div class="user-actions">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <span class="fas fa-bars"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="nav-overlay"></div>
+
+    <!-- Main content -->
+    <main class="my-donations-container">
+        <!-- Auth check message -->
+        <div id="auth-required" class="auth-required" style="display:none;">
+            <div class="container">
+                <div class="auth-message">
+                    <div class="auth-icon">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h2>Login Diperlukan</h2>
+                    <p>Anda perlu login terlebih dahulu untuk mengakses halaman Donasi Saya.</p>
+                    <div class="auth-buttons">
+                        <a href="login.html" class="btn btn-primary">Masuk</a>
+                        <a href="register.html" class="btn btn-outline">Daftar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My donations content (only shown when logged in) -->
+        <div id="my-donations-content" style="display:none;">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="container">
+                    <div class="header-content">
+                        <div>
+                            <h1>Donasi Saya</h1>
+                            <p>Kelola semua donasi yang telah Anda berikan</p>
+                        </div>
+                        <div class="header-actions">
+                            <a href="donasi.html" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Donasi Baru
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <!-- Donation statistics -->
+                <div class="donation-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-donations">0</h3>
+                            <p>Total Donasi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon active-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="active-donations">0</h3>
+                            <p>Aktif</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon pending-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pending-donations">0</h3>
+                            <p>Menunggu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon completed-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="completed-donations">0</h3>
+                            <p>Selesai</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filtering and search -->
+                <div class="filter-section">
+                    <div class="search-box">
+                        <input type="text" id="search-donations" class="form-control" placeholder="Cari donasi...">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="donation-tabs">
+                            <button class="tab-btn active" data-tab="all">Semua</button>
+                            <button class="tab-btn" data-tab="active">Aktif</button>
+                            <button class="tab-btn" data-tab="pending">Menunggu</button>
+                            <button class="tab-btn" data-tab="completed">Selesai</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Donations list -->
+                <div class="donations-list" id="donations-list">
+                    <!-- Loading state -->
+                    <div class="loading-state">
+                        <div class="loader"></div>
+                        <p>Memuat donasi...</p>
+                    </div>
+                    
+                    <!-- Empty state (will show when no donations exist) -->
+                    <div class="empty-state" style="display:none;">
+                        <div class="empty-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3>Belum Ada Donasi</h3>
+                        <p>Anda belum mendonasikan barang apapun. Mulailah berbagi dengan donasi barang bekas layak pakai.</p>
+                        <a href="donasi.html" class="btn btn-primary">Donasi Sekarang</a>
+                    </div>
+                    
+                    <!-- Donations will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Detail Modal -->
+    <div class="modal" id="detail-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Detail Donasi</h3>
+                <button class="close-modal" id="close-detail-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body" id="detail-content">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Hapus Donasi</h3>
+                <button class="close-modal" id="close-delete-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="warning-box">
+                    <div class="warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <p class="warning-text">
+                        <strong>Perhatian!</strong> Apakah Anda yakin ingin menghapus donasi ini? Tindakan ini tidak dapat dibatalkan.
+                    </p>
+                </div>
+                
+                <div class="donation-to-delete" id="donation-to-delete">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancel-delete">Batal</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete">Hapus Donasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <!-- Visual elements -->
+        <div class="footer-pattern"></div>
+        <div class="footer-accent"></div>
+        
+        <!-- Main content -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section footer-about">
+                        <div class="footer-logo">
+                            <div class="footer-logo-image">
+                                <img src="assets/logo-kecil.png" alt="Logo DonasiBerkat">
+                            </div>
+                            <div class="footer-logo-text">Donasi<span>Berkat</span></div>
+                        </div>
+                        <p>DonasiBerkat adalah platform yang menghubungkan pendonor barang bekas layak pakai dengan orang-orang yang membutuhkan di kawasan Tasikmalaya. Mari bergabung untuk mewujudkan masyarakat yang saling peduli.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section footer-links">
+                        <h3>Tautan Cepat</h3>
+                        <ul>
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="donasi.html">Donasi Barang</a></li>
+                            <li><a href="browse.html">Cari Barang</a></li>
+                            <li><a href="tentang.html">Tentang Kami</a></li>
+                            <li><a href="kontak.html">Kontak</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section footer-contact">
+                        <h3>Kontak</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Siliwangi No. 123, Tasikmalaya</p>
+                        <p><i class="fas fa-envelope"></i> info@donasibekat.id</p>
+                        <p><i class="fas fa-phone"></i> (022) 123-4567</p>
+                        <p><i class="fas fa-clock"></i> Senin - Jumat, 08:00 - 17:00</p>
+                    </div>
+                    
+                    <div class="footer-section footer-newsletter">
+                        <h3>Berlangganan Newsletter</h3>
+                        <p>Dapatkan informasi terbaru tentang barang donasi dan kegiatan kami.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Alamat email Anda" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer bottom with copyright -->
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="current-year">2023</span> DonasiBerkat Tasikmalaya. Hak Cipta Dilindungi.</p>
+                <div class="footer-bottom-links">
+                    <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+                    <a href="syarat-ketentuan.html">Syarat & Ketentuan</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Go to top button -->
+        <a href="#" class="go-top" aria-label="Kembali ke atas">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/donasi-saya.js"></script>
+</body>
+</html>

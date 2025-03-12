@@ -1,0 +1,304 @@
+Se/*
+* DonasiBerkat Tasikmalaya - Featured Items CSS Stylesheet
+* Modern and professional styling for featured items section
+*/
+
+/* ========== FEATURED ITEMS SECTION ========== */
+.featured-items {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration elements */
+.featured-items::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Section header and description */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  position: relative;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-sm);
+  font-size: 2.2rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+.section-description {
+  max-width: 700px;
+  margin: var(--spacing-md) auto 0;
+  color: var(--color-gray-600);
+  font-size: 1.1rem;
+}
+
+/* Items grid layout */
+.items-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Card design */
+.item-card {
+  position: relative;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Card images */
+.item-image {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.item-card:hover .item-image img {
+  transform: scale(1.08);
+}
+
+/* Category badge */
+.item-category {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  display: inline-block;
+  background: rgba(46, 204, 113, 0.9);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+/* Card content */
+.item-content {
+  padding: var(--spacing-md) var(--spacing-md);
+}
+
+.item-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.item-title a {
+  color: var(--color-gray-900);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-card:hover .item-title a {
+  color: var(--color-primary);
+}
+
+.item-condition {
+  color: var(--color-gray-600);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+}
+
+.item-condition::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  margin-right: var(--spacing-xs);
+  opacity: 0.7;
+}
+
+/* Item details */
+.item-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.item-location, 
+.item-donor {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-gray-600);
+  font-size: 0.875rem;
+}
+
+.item-location i, 
+.item-donor i {
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  width: 16px;
+  text-align: center;
+}
+
+/* Call to action button */
+.item-card .btn {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+}
+
+.item-card .btn-primary {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.item-card .btn-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* See more action */
+.see-more {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.see-more .btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+}
+
+.see-more .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state */
+.no-items {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  color: var(--color-gray-600);
+}
+
+/* Loading skeleton */
+.item-card.skeleton {
+  height: 340px;
+  background-color: var(--color-gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.item-card.skeleton::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+  animation: loading 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+@keyframes loading {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--spacing-md);
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-description {
+    font-size: 1rem;
+    padding: 0 var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .items-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .item-image {
+    height: 180px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .featured-items {
+    padding: var(--spacing-xl) 0;
+  }
+}

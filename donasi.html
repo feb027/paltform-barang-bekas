@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donasi Barang - DonasiBerkat Tasikmalaya</title>
+    <meta name="description" content="Donasikan barang bekas layak pakai Anda untuk membantu sesama di Tasikmalaya dan sekitarnya.">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/donasi.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-image">
+                   <img src="/assets/logo-kecil.png" alt="Logo" />
+                </div>
+                <div class="logo-text">
+                    <h1><a href="/">Donasi<span>Berkat</span></a></h1>
+                    <p class="tagline">Berbagi Keberkahan untuk Tasikmalaya</p>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/donasi.html" class="active">Donasi</a></li>
+                        <li><a href="/browse.html">Cari Barang</a></li>
+                        <li><a href="/tentang.html">Tentang Kami</a></li>
+                    </ul>
+                    
+                    <!-- Mobile-specific menu section -->
+                    <div class="mobile-menu-section">
+                        <h4>Akun</h4>
+                        <div class="mobile-user-actions">
+                            <a href="/login.html" class="btn btn-outline">Masuk</a>
+                            <a href="/register.html" class="btn btn-primary">Daftar</a>
+                        </div>
+                    </div>
+                </nav>
+                
+                <div class="user-actions">
+                    <a href="/login.html" class="btn btn-outline">Masuk</a>
+                    <a href="/register.html" class="btn btn-primary">Daftar</a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <span class="fas fa-bars"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="nav-overlay"></div>
+
+    <!-- Page Header - Updated to focus on donation action -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Donasikan Barang Anda</h1>
+            <p>Bantu sesama dengan menyumbangkan barang bekas layak pakai yang tidak terpakai</p>
+            <div class="header-buttons">
+                <button id="open-donation-form" class="btn btn-primary btn-large">
+                    <i class="fas fa-plus-circle"></i> Donasi Barang Sekarang
+                </button>
+                <a href="/panduan-donasi.html" class="btn btn-outline btn-large">
+                    <i class="fas fa-info-circle"></i> Panduan Donasi
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - Updated to focus on user's donations -->
+    <main class="main-content">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Donasi Saya</h2>
+                <p class="section-description">Daftar barang yang telah Anda donasikan melalui platform ini</p>
+            </div>
+            
+            <!-- Login Required Message (when not logged in) -->
+            <div class="login-required-container" id="login-required-container">
+                <div class="login-required">
+                    <div class="login-icon">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h3>Silakan Masuk untuk Melihat Donasi Anda</h3>
+                    <p>Anda perlu masuk atau mendaftar terlebih dahulu untuk melihat barang yang telah Anda donasikan dan menambahkan donasi baru.</p>
+                    <div class="login-buttons">
+                        <a href="/login.html" class="btn btn-primary">Masuk</a>
+                        <a href="/register.html" class="btn btn-outline">Daftar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Donation List (when logged in) -->
+            <div class="donation-list" id="donation-list" style="display: none;">
+                <!-- Tabs for different donation states -->
+                <div class="donation-tabs">
+                    <button class="tab-btn active" data-tab="all">Semua</button>
+                    <button class="tab-btn" data-tab="active">Aktif</button>
+                    <button class="tab-btn" data-tab="pending">Menunggu</button>
+                    <button class="tab-btn" data-tab="completed">Selesai</button>
+                </div>
+                
+                <!-- Items Grid - Will show user's own donations -->
+                <div class="items-grid" id="my-donations">
+                    <!-- Items will be loaded by JavaScript -->
+                    <div class="item-card skeleton" aria-hidden="true"></div>
+                    <div class="item-card skeleton" aria-hidden="true"></div>
+                </div>
+                
+                <!-- Empty state when no donations -->
+                <div class="no-donations" id="no-donations" style="display: none;">
+                    <div class="no-items">
+                        <i class="fas fa-box-open fa-3x" style="color: var(--color-gray-400); margin-bottom: var(--spacing-md);"></i>
+                        <h3>Belum Ada Donasi</h3>
+                        <p>Anda belum mendonasikan barang apapun. Klik tombol "Donasi Barang Sekarang" untuk memulai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Donation Form Modal -->
+    <div id="donation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Donasikan Barang</h2>
+                <button id="close-modal" class="close-btn" aria-label="Tutup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Login required message (shown when user is not logged in) -->
+                <div id="login-required-message" style="display: none;">
+                    <div class="login-required">
+                        <div class="login-icon">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                        <h3>Silakan Masuk untuk Melanjutkan</h3>
+                        <p>Anda perlu masuk atau mendaftar terlebih dahulu untuk dapat mendonasikan barang.</p>
+                        <div class="login-buttons">
+                            <a href="/login.html" class="btn btn-primary">Masuk</a>
+                            <a href="/register.html" class="btn btn-outline">Daftar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation form (shown when user is logged in) -->
+                <form id="donation-form" style="display: none;">
+                    <div class="form-section">
+                        <h3>Informasi Barang</h3>
+                        
+                        <div class="form-group">
+                            <label for="item-title" class="required">Judul</label>
+                            <input type="text" id="item-title" class="form-control" placeholder="Misal: Sepeda Anak Bekas, Meja Belajar, dll" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="item-category" class="required">Kategori</label>
+                            <select id="item-category" class="form-control" required>
+                                <option value="">Pilih Kategori</option>
+                                <!-- Categories will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="item-condition" class="required">Kondisi Barang</label>
+                                <select id="item-condition" class="form-control" required>
+                                    <option value="">Pilih Kondisi</option>
+                                    <option value="Baru">Baru</option>
+                                    <option value="Bekas - Kondisi 90%">Bekas - Seperti Baru (90%+)</option>
+                                    <option value="Bekas - Kondisi 80%">Bekas - Sangat Baik (80%+)</option>
+                                    <option value="Bekas - Kondisi 70%">Bekas - Baik (70%+)</option>
+                                    <option value="Bekas - Kondisi 60%">Bekas - Cukup Baik (60%+)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="item-quantity" class="required">Jumlah</label>
+                                <input type="number" id="item-quantity" class="form-control" min="1" value="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="item-description" class="required">Deskripsi Barang</label>
+                            <textarea id="item-description" class="form-control" rows="4" placeholder="Deskripsikan kondisi barang, warna, ukuran, kelengkapan, dll." required></textarea>
+                            <div class="form-help">Minimal 50 karakter. Sisa: <span id="char-count">50</span> karakter</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Foto Barang</h3>
+                        
+                        <div class="image-upload-container">
+                            <div class="upload-box primary-upload" id="primary-upload">
+                                <input type="file" id="item-primary-image" class="file-input" accept="image/*" required>
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Foto Utama*</span>
+                                </div>
+                                <div class="upload-preview" style="display: none;">
+                                    <img id="primary-image-preview" alt="Preview">
+                                    <button type="button" class="remove-image" data-target="primary-upload">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-box" id="additional-upload-1">
+                                <input type="file" id="item-image-1" class="file-input" accept="image/*">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Foto Tambahan</span>
+                                </div>
+                                <div class="upload-preview" style="display: none;">
+                                    <img id="image-preview-1" alt="Preview">
+                                    <button type="button" class="remove-image" data-target="additional-upload-1">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-box" id="additional-upload-2">
+                                <input type="file" id="item-image-2" class="file-input" accept="image/*">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Foto Tambahan</span>
+                                </div>
+                                <div class="upload-preview" style="display: none;">
+                                    <img id="image-preview-2" alt="Preview">
+                                    <button type="button" class="remove-image" data-target="additional-upload-2">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-help">Format: JPG, PNG. Ukuran maks: 5MB per foto.</div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Lokasi & Kontak</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="item-location" class="required">Lokasi Barang</label>
+                                <select id="item-location" class="form-control" required>
+                                    <option value="">Pilih Lokasi</option>
+                                    <option value="Cihideung">Cihideung</option>
+                                    <option value="Tawang">Tawang</option>
+                                    <option value="Mangkubumi">Mangkubumi</option>
+                                    <option value="Indihiang">Indihiang</option>
+                                    <option value="Kawalu">Kawalu</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="other-location-group" style="display: none;">
+                                <label for="other-location" class="required">Lokasi Lainnya</label>
+                                <input type="text" id="other-location" class="form-control" placeholder="Masukkan nama daerah">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="item-address">Alamat Detail</label>
+                            <textarea id="item-address" class="form-control" rows="2" placeholder="Opsional: untuk memudahkan koordinasi (hanya visible ke penerima yang disetujui)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-preference" class="required">Preferensi Kontak</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="contact-preference" value="app" checked>
+                                    <span class="checkmark"></span>
+                                    Chat Aplikasi
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="contact-preference" value="whatsapp">
+                                    <span class="checkmark"></span>
+                                    WhatsApp
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="contact-preference" value="phone">
+                                    <span class="checkmark"></span>
+                                    Telepon
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Syarat & Ketentuan</h3>
+                        
+                        <div class="terms-agreement">
+                            <label class="checkbox-container required">
+                                <input type="checkbox" id="terms-agree" required>
+                                <span class="checkmark"></span>
+                                Saya menyatakan bahwa informasi yang diberikan benar adanya dan barang yang saya donasikan adalah milik pribadi saya, dalam kondisi layak pakai dan tidak melanggar ketentuan platform.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancel-donation" class="btn btn-outline">Batal</button>
+                        <button type="submit" id="submit-donation" class="btn btn-primary">
+                            <span class="btn-text">Kirim Donasi</span>
+                            <span class="btn-loader" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Donasi Berhasil Dikirim!</h2>
+            <p>Terima kasih atas donasi Anda. Kami akan mereview dan mempublikasikan barang Anda segera.</p>
+            <div class="success-actions">
+                <button id="view-donations" class="btn btn-primary">Lihat Donasi Saya</button>
+                <button id="close-success" class="btn btn-outline">Kembali ke Halaman Donasi</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <!-- Visual elements -->
+        <div class="footer-pattern"></div>
+        <div class="footer-accent"></div>
+        
+        <!-- Main content -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section footer-about">
+                        <div class="footer-logo">
+                            <div class="footer-logo-image">
+                                <img src="/assets/logo-kecil.png" alt="Logo DonasiBerkat">
+                            </div>
+                            <div class="footer-logo-text">Donasi<span>Berkat</span></div>
+                        </div>
+                        <p>DonasiBerkat adalah platform yang menghubungkan pendonor barang bekas layak pakai dengan orang-orang yang membutuhkan di kawasan Tasikmalaya. Mari bergabung untuk mewujudkan masyarakat yang saling peduli.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section footer-links">
+                        <h3>Tautan Cepat</h3>
+                        <ul>
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/donasi.html">Donasi Barang</a></li>
+                            <li><a href="/cari-barang.html">Cari Barang</a></li>
+                            <li><a href="/tentang.html">Tentang Kami</a></li>
+                            <li><a href="/kontak.html">Kontak</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section footer-contact">
+                        <h3>Kontak</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Siliwangi No. 123, Tasikmalaya</p>
+                        <p><i class="fas fa-envelope"></i> info@donasibekat.id</p>
+                        <p><i class="fas fa-phone"></i> (022) 123-4567</p>
+                        <p><i class="fas fa-clock"></i> Senin - Jumat, 08:00 - 17:00</p>
+                    </div>
+                    
+                    <div class="footer-section footer-newsletter">
+                        <h3>Berlangganan Newsletter</h3>
+                        <p>Dapatkan informasi terbaru tentang barang donasi dan kegiatan kami.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Alamat email Anda" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer bottom with copyright -->
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="current-year">2023</span> DonasiBerkat Tasikmalaya. Hak Cipta Dilindungi.</p>
+                <div class="footer-bottom-links">
+                    <a href="/kebijakan-privasi.html">Kebijakan Privasi</a>
+                    <a href="/syarat-ketentuan.html">Syarat & Ketentuan</a>
+                    <a href="/faq.html">FAQ</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Go to top button -->
+        <a href="#" class="go-top" aria-label="Kembali ke atas">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </footer>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/donasi.js"></script>
+</body>
+</html>
