@@ -106,7 +106,7 @@ function createItemCard(item) {
     card.innerHTML = `
         <div class="item-image">
             <span class="item-category">${item.category}</span>
-            <img src="${item.image || '/assets/items/placeholder.jpg'}" alt="${item.title}" loading="lazy">
+            <img src="${item.image || './assets/items/placeholder.jpg'}" alt="${item.title}" loading="lazy">
         </div>
         <div class="item-content">
             <h3 class="item-title">

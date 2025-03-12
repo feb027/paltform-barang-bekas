@@ -167,13 +167,13 @@ const chatData = {
     {
       id: 101,
       participants: [
-        { id: 1, name: 'Ahmad Fauzi', avatar: '/assets/febnawan.jpg' },
-        { id: 2, name: 'Siti Aminah', avatar: '/assets/leli.jpg' }
+        { id: 1, name: 'Ahmad Fauzi', avatar: './assets/febnawan.jpg' },
+        { id: 2, name: 'Siti Aminah', avatar: './assets/leli.jpg' }
       ],
       donation: {
         id: 1, 
         title: 'Sepeda Anak Kondisi Sangat Baik',
-        image: '/assets/items/sepeda-anak.jpg'
+        image: './assets/items/sepeda-anak.jpg'
       },
       lastMessage: {
         content: 'Baik, nanti saya kabari lagi ya',
@@ -186,13 +186,13 @@ const chatData = {
     {
       id: 102,
       participants: [
-        { id: 1, name: 'Ahmad Fauzi', avatar: '/assets/febnawan.jpg' },
-        { id: 3, name: 'Budi Santoso', avatar: '/assets/arie.jpg' }
+        { id: 1, name: 'Ahmad Fauzi', avatar: './assets/febnawan.jpg' },
+        { id: 3, name: 'Budi Santoso', avatar: './assets/arie.jpg' }
       ],
       donation: {
         id: 3, 
         title: 'Buku Pelajaran SD Kelas 4-6',
-        image: '/assets/items/buku-pelajaran.jpg'
+        image: './assets/items/buku-pelajaran.jpg'
       },
       lastMessage: {
         content: 'Apakah buku masih tersedia?',

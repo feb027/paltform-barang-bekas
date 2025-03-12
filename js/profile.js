@@ -325,7 +325,7 @@ function initModals() {
                 localStorage.removeItem('userAvatar');
                 
                 // Redirect to home page
-                window.location.href = '/';
+                window.location.href = './';
             });
         }
     }

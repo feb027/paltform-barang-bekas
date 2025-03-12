@@ -78,7 +78,7 @@ function populateItemDetails(item) {
     document.getElementById('breadcrumb-title').textContent = item.title;
     
     // Update main item information
-    document.getElementById('main-image').src = item.image || '/assets/items/placeholder.jpg';
+    document.getElementById('main-image').src = item.image || './assets/items/placeholder.jpg';
     document.getElementById('main-image').alt = item.title;
     document.getElementById('item-category').textContent = item.category;
     document.getElementById('item-title').textContent = item.title;
@@ -149,7 +149,7 @@ function createItemCard(item) {
     card.innerHTML = `
         <div class="item-image">
             <span class="item-category">${item.category}</span>
-            <img src="${item.image || '/assets/items/placeholder.jpg'}" alt="${item.title}" loading="lazy">
+            <img src="${item.image || './assets/items/placeholder.jpg'}" alt="${item.title}" loading="lazy">
         </div>
         <div class="item-content">
             <h3 class="item-title">

@@ -166,9 +166,9 @@ function initLoginForm() {
                 
                 // Redirect based on user role
                 if (user.role === 'admin') {
-                    window.location.href = '/admin/dashboard.html';
+                    window.location.href = './admin/dashboard.html';
                 } else {
-                    window.location.href = '/profil.html';
+                    window.location.href = './profil.html';
                 }
             } else {
                 // Show error message
@@ -261,7 +261,7 @@ function initRegisterForm() {
                 localStorage.setItem('userRole', 'user');
                 
                 // Redirect to profile page
-                window.location.href = '/profil.html';
+                window.location.href = './profil.html';
             }
         }, 1000);
     });
