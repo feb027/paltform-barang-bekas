@@ -3,6 +3,9 @@
  * Handles login and registration functionality
  */
 
+// Configure base URL for GitHub Pages deployment
+const BASE_URL = '/paltform-barang-bekas/'; // Change this for local development to '' if needed
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize password toggle functionality
     initPasswordToggles();
@@ -164,11 +167,11 @@ function initLoginForm() {
                 localStorage.setItem('userEmail', user.email);
                 localStorage.setItem('userRole', user.role);
                 
-                // Redirect based on user role
+                // Redirect based on user role - with proper BASE_URL
                 if (user.role === 'admin') {
-                    window.location.href = './admin/dashboard.html';
+                    window.location.href = BASE_URL + 'dashboard.html';
                 } else {
-                    window.location.href = './profil.html';
+                    window.location.href = BASE_URL + 'profil.html';
                 }
             } else {
                 // Show error message
@@ -260,8 +263,8 @@ function initRegisterForm() {
                 localStorage.setItem('userEmail', email);
                 localStorage.setItem('userRole', 'user');
                 
-                // Redirect to profile page
-                window.location.href = './profil.html';
+                // Redirect to profile page with proper BASE_URL
+                window.location.href = BASE_URL + 'profil.html';
             }
         }, 1000);
     });
