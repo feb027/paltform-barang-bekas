@@ -17,7 +17,7 @@ const featuredItems = [
     location: "Cihideung",
     donor: "Ahmad Fauzi",
     posted: "2023-05-10",
-    image: "/assets/items/sepeda-anak.jpg",
+    image: "./assets/items/sepeda-anak.jpg",
     status: "active"
   },
   {
@@ -29,7 +29,7 @@ const featuredItems = [
     location: "Tawang",
     donor: "Siti Aminah",
     posted: "2023-05-12",
-    image: "/assets/items/meja-belajar.jpg",
+    image: "./assets/items/meja-belajar.jpg",
     status: "pending"
   },
   {
@@ -41,7 +41,7 @@ const featuredItems = [
     location: "Indihiang",
     donor: "Budi Santoso",
     posted: "2023-05-15",
-    image: "/assets/items/buku-pelajaran.jpg",
+    image: "./assets/items/buku-pelajaran.jpg",
     status: "completed"
   },
   {
@@ -53,7 +53,7 @@ const featuredItems = [
     location: "Mangkubumi",
     donor: "Rina Wati",
     posted: "2023-05-17",
-    image: "/assets/items/pakaian-anak.jpg"
+    image: "./assets/items/pakaian-anak.jpg"
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const featuredItems = [
     location: "Kawalu",
     donor: "Joko Widodo",
     posted: "2023-05-19",
-    image: "/assets/items/kompor-gas.jpg"
+    image: "./assets/items/kompor-gas.jpg"
   },
   {
     id: 6,
@@ -75,7 +75,7 @@ const featuredItems = [
     location: "Cihideung",
     donor: "Deni Permana",
     posted: "2023-05-21",
-    image: "/assets/items/smartphone.jpg"
+    image: "./assets/items/smartphone.jpg"
   }
 ];
 
@@ -319,9 +319,9 @@ const userDonations = [
     location: "Tawang",
     date: "2025-08-15",
     status: "completed",
-    image: "/assets/items/lemari.png",
+    image: "./assets/items/lemari.png",
     images: [
-      "/assets/items/lemari.png",
+      "./assets/items/lemari.png",
     ],
     views: 67,
     interested: 5
@@ -335,10 +335,10 @@ const userDonations = [
     location: "Indihiang",
     date: "2025-10-05",
     status: "pending",
-    image: "/assets/items/seragam-sd.jpg",
+    image: "./assets/items/seragam-sd.jpg",
     images: [
-      "/assets/items/seragam-sd.jpg",
-      "/assets/items/seragam-sd-2.jpg"
+      "./assets/items/seragam-sd.jpg",
+      "./assets/items/seragam-sd-2.jpg"
     ],
     views: 12,
     interested: 0

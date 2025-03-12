@@ -107,7 +107,7 @@ function createDonationCard(item) {
         </div>
         <div class="item-content">
             <h3 class="item-title">
-                <a href="/detail.html?id=${item.id}">${item.title}</a>
+                <a href="./detail.html?id=${item.id}">${item.title}</a>
             </h3>
             <div class="item-condition">${item.condition}</div>
             <div class="item-details">
@@ -121,7 +121,7 @@ function createDonationCard(item) {
                 </div>
             </div>
             <div class="item-actions">
-                <a href="/detail.html?id=${item.id}" class="btn btn-outline">Lihat Detail</a>
+                <a href="./detail.html?id=${item.id}" class="btn btn-outline">Lihat Detail</a>
                 <button class="btn btn-danger btn-small delete-donation" data-id="${item.id}">
                     <i class="fas fa-trash"></i>
                 </button>

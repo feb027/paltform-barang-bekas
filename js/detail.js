@@ -153,7 +153,7 @@ function createItemCard(item) {
         </div>
         <div class="item-content">
             <h3 class="item-title">
-                <a href="/detail.html?id=${item.id}">${item.title}</a>
+                <a href="./detail.html?id=${item.id}">${item.title}</a>
             </h3>
             <div class="item-condition">${item.condition}</div>
             <div class="item-details">
@@ -166,7 +166,7 @@ function createItemCard(item) {
                     <span>${item.donor}</span>
                 </div>
             </div>
-            <a href="/detail.html?id=${item.id}" class="btn btn-primary">Lihat Detail</a>
+            <a href="./detail.html?id=${item.id}" class="btn btn-primary">Lihat Detail</a>
         </div>
     `;
     

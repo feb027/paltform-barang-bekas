@@ -606,8 +606,8 @@ function getMockDonations() {
                 location: "Cihideung",
                 date: "2023-09-10",
                 status: "active",
-                image: "/assets/items/laptop.jpg",
-                images: ["/assets/items/laptop.jpg"],
+                image: "./assets/items/laptop.jpg",
+                images: ["./assets/items/laptop.jpg"],
                 views: 45,
                 interested: 3
             },
@@ -620,8 +620,8 @@ function getMockDonations() {
                 location: "Indihiang",
                 date: "2023-10-05",
                 status: "pending",
-                image: "/assets/items/seragam-sd.jpg",
-                images: ["/assets/items/seragam-sd.jpg"],
+                image: "./assets/items/seragam-sd.jpg",
+                images: ["./assets/items/seragam-sd.jpg"],
                 views: 12,
                 interested: 0
             },
@@ -634,8 +634,8 @@ function getMockDonations() {
                 location: "Tawang",
                 date: "2023-08-15",
                 status: "completed",
-                image: "/assets/items/lemari.jpg",
-                images: ["/assets/items/lemari.jpg"],
+                image: "./assets/items/lemari.jpg",
+                images: ["./assets/items/lemari.jpg"],
                 views: 67,
                 interested: 5
             }
